@@ -30,13 +30,15 @@ public class ProductController {
 	 * @Param  Product product
 	 * return product
 	 */
-	@PostMapping("/addproduct")
+  @PostMapping("/addproduct")
  public ResponseEntity<Object> addProduct(@RequestParam("productImagePath") MultipartFile productImagePath,HttpServletRequest request  )
  {
-		String saveDirectory="/Images/";
+		String saveDirectory="D:/Spring_tool_suite_workspace/DigiMantraAssignment/src/main/resources/static/Images/";
 	    Product product = new Product();
 	    try {
+	    	System.out.println("entry method");
 			String filename=productImagePath.getOriginalFilename();
+			System.out.println(filename);
             product.setProductImagePath(filename);
             productImagePath.transferTo(new File(saveDirectory+filename));
 	    	product.setProductName(request.getParameter("productName"));
@@ -88,7 +90,7 @@ public class ProductController {
 	
 	/*
 	 * Search product by its Color 
-	 * @Param  String  Color
+	 * @Param  String  color
 	 * return product
 	 */
 	
